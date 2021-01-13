@@ -1,0 +1,25 @@
+.header
+    background: #FFFFFF
+    box-shadow: 0 0 20px rgba(#006AA7, 0.1)
+    &__wrapper
+        display: flex
+        align-items: center
+        justify-content: space-between
+
+.logotype
+    display: inline-block
+
+.nav
+    &__list
+        display: flex
+        align-items: center
+    &__item
+        padding: 22px 24px
+        &--active
+            border-top: 2px solid #0089D7
+            .nav__link
+                color: #3A4C56
+    &__link
+        font-family: $graphiclcg-medium
+        font-size: 16px
+        color: rgba(#3A4C56, 0.66)

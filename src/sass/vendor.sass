@@ -1,0 +1,15 @@
+// FONTS LOAD SECTION
+@mixin font($fname, $fstyle, $fweight, $furl1, $furl2, $furl3)
+	@font-face
+		font-family: $fname
+		font-style: $fstyle
+		font-weight: $fweight
+		font-display: swap
+		src: local($fname), url($furl1) format('woff2'), url($furl2) format('woff'), url($furl3) format('embedded-opentype')
+
+@include font('GraphicLCG-Regular', normal, 400, '../fonts/GraphikLCG/GraphikLCG-Regular.woff2', '../fonts/GraphikLCG/GraphikLCG-Regular.woff', '../fonts/GraphikLCG/GraphikLCG-Regular.eot')
+@include font('GraphicLCG-Medium', normal, 500, '../fonts/GraphikLCG/GraphikLCG-Medium.woff2', '../fonts/GraphikLCG/GraphikLCG-Medium.woff', '../fonts/GraphikLCG/GraphikLCG-Medium.eot')
+@include font('GraphicLCG-Semibold', normal, 600, '../fonts/GraphikLCG/GraphikLCG-Semibold.woff2', '../fonts/GraphikLCG/GraphikLCG-Semibold.woff', '../fonts/GraphikLCG/GraphikLCG-Semibold.eot')
+
+// IMPORT SECTION
+@import 'node_modules/bootstrap/scss/bootstrap-reboot.scss' // Bootstrap Reboot collection

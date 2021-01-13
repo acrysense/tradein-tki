@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Телекоминвест - TradeIn</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/vendor.min.css">
+    <link rel="stylesheet" href="css/app.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header__wrapper">
+                <a href="" class="logotype">
+                    <img src="img/dist/logotype.svg" alt="TradeIn TKI">
+                </a>
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="" class="nav__link">Главная</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="" class="nav__link">Список заявок</a>
+                        </li>
+                        <li class="nav__item nav__item--active">
+                            <a href="" class="nav__link">Создать заявку</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="" class="nav__link">Тех. поддержка</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="" class="nav__link">Выйти</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- End of header -->
+    <!-- Content -->
+    <section class="trade-in">
+        <div class="container">
+            <div class="trade-in__wrapper">
+                <div class="trade-in__sidebar">
+                    <ul class="stage">
+                        <li class="stage__item stage__item--active">Определение модели</li>
+                        <li class="stage__item">Оценка состояния</li>
+                        <li class="stage__item">Подтверждение стоимости</li>
+                        <li class="stage__item">Ввод данных клиента</li>
+                        <li class="stage__item">Проверка</li>
+                        <li class="stage__item">Вывод договора</li>
+                    </ul>
+                </div>
+                <div class="trade-in__content">
+                    <div class="trade-in__title">Android</div>
+                    <p class="trade-in__description">Есть ли на устройстве лоток сим-карты (IMEI)?</p>
+                    <div class="tabs">
+                        <ul class="tabs__list" role="tablist">
+                            <li class="tabs__item">
+                                <label for="sim-card1" class="sim-checkbox">
+                                    <input type="radio" class="sim-checkbox__input" name="sim-card" id="sim-card1">
+                                    <span class="sim-checkbox__group">
+                                        <span class="sim-checkbox__icon" style="background-image: url(img/dist/sprite.svg#sim-card);"></span>
+                                        <span class="sim-checkbox__title">Есть</span>
+                                    </span>
+                                </label>
+                            </li>
+                            <li class="tabs__item">
+                                <label for="sim-card2" class="sim-checkbox">
+                                    <input type="radio" class="sim-checkbox__input" name="sim-card" id="sim-card2">
+                                    <span class="sim-checkbox__group">
+                                        <span class="sim-checkbox__icon" style="background-image: url(img/dist/sprite.svg#no-sim-card);"></span>
+                                        <span class="sim-checkbox__title">Нет</span>
+                                    </span>
+                                </label>
+                            </li>
+                        </ul>
+                        <div class="tabs__content tabs__content--margin">
+                            <label for="imei" class="counter-input">
+                                <input type="number" id="imei" class="counter-input__input input" placeholder="Пример: 356626097111720" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)" min="999999999999999" max="999999999999999">
+                                <span class="counter-input__group">
+                                    <span class="counter-input__characters" id="imei-characters"></span>/15
+                                </span>
+                            </label>
+                        </div>
+                        <div class="tabs__content">
+                            <p class="tabs__paragraph">Поддержка выкупа устройств без сим-карты доступно только для следующих производителей:</p>
+                            <label for="phone1" class="custom-checkbox">
+                                <input type="radio" id="phone1" name="phone" class="custom-checkbox__input">
+                                <span class="custom-checkbox__icon"></span>
+                                <span class="custom-checkbox__title">Samsung</span>
+                            </label>
+                            <label for="phone2" class="custom-checkbox">
+                                <input type="radio" id="phone2" name="phone" class="custom-checkbox__input">
+                                <span class="custom-checkbox__icon"></span>
+                                <span class="custom-checkbox__title">Xiaomi</span>
+                            </label>
+                            <label for="imei" class="counter-input">
+                                <input type="number" id="serial-number" class="counter-input__input input" placeholder="Пример: FH8VP6TWJ5X4" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)" min="99999999999" max="999999999999">
+                                <span class="counter-input__group">
+                                    <span class="counter-input__characters" id="serial-number-characters"></span>/11-12
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="trade-in__buttons">
+                        <button href="" class="trade-in__refusing btn">Отказ</button>
+                        <button href="" class="trade-in__continue btn" disabled>Продолжить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End of content -->
+    <!-- Scripts -->
+    <script>
+        function maxLengthCheck(object) {
+            if (object.value.length > object.max.length) {
+                object.value = object.value.slice(0, object.max.length)
+            }
+        }
+          
+        function isNumeric (evt) {
+            let theEvent = evt || window.event;
+            let key = theEvent.keyCode || theEvent.which;
+            key = String.fromCharCode (key);
+            let regex = /[0-9]|\./;
+            if (!regex.test(key)) {
+                theEvent.returnValue = false;
+                if (theEvent.preventDefault) {
+                    theEvent.preventDefault();
+                }
+            }
+        }
+      </script>
+    <script src="js/app.min.js"></script>
+</body>
+</html>
