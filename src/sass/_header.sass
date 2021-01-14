@@ -23,3 +23,138 @@
         font-family: $graphiclcg-medium
         font-size: 16px
         color: rgba(#3A4C56, 0.66)
+        & > svg
+            margin-left: 14px
+            vertical-align: middle
+        & > svg path
+            transition: all 0.5s
+        &:hover
+            & > svg path
+                stroke-opacity: 1
+
+.hamburger
+    display: inline-block
+    position: relative
+    z-index: 101
+    padding: 0
+    margin: 0
+    min-width: 24px
+    height: 24px
+    font-size: 0
+    text-align: center
+    background: none
+    border: none
+    cursor: pointer
+    &:focus
+        outline: none
+    &--active
+        .hamburger__inner
+            &:first-child
+                top: 10px
+                transform: rotate(45deg)
+            &:nth-child(2)
+                width: 0
+                opacity: 0
+            &:last-child
+                top: 10px
+                transform: rotate(-45deg)
+    &__inner
+        display: block
+        position: absolute
+        width: 100%
+        height: 3px
+        background: #3A4C56
+        border-radius: 30px
+        transition: all 0.5s ease-in-out
+        &:first-child
+            top: 0
+        &:nth-child(2)
+            top: 10px
+        &:last-child
+            top: 20px
+
+// ANIMATION
+@keyframes fadeInRight
+    0%
+        left: 50px
+        opacity: 0
+    75%
+        left: 12px
+        transform: rotate(0deg)
+        opacity: 1
+    100%
+        left: 0
+        transform: rotate(0deg)
+        opacity: 1
+
+// MEDIA QUARIES
+@media (min-width: 992px)
+    .hamburger
+        display: none
+
+@media (max-width: 991px)
+    .header
+        padding: 22px 0
+    .overlay
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        position: fixed
+        top: 0
+        right: 0
+        z-index: 100
+        transform-origin: right top
+        transform: scale(0)
+        overflow: hidden
+        visibility: hidden
+        height: 100%
+        width: 100%
+        opacity: 0
+        background: #FFF
+        transition: all 0.5s ease-in-out
+        &--open
+            transform: scale(1)
+            visibility: visible
+            opacity: 0.99
+            .nav__item
+                display: block
+                animation: fadeInRight 0.95s cubic-bezier(0.42, 0.83, 0.7, 1.25) forwards
+                animation-delay: 0.3s
+                transform-origin: bottom
+                &:nth-of-type(2)
+                    animation-delay: 0.45s
+                &:nth-of-type(3)
+                    animation-delay: 0.55s
+                &:nth-of-type(4)
+                    animation-delay: 0.65s
+                &:nth-of-type(5)
+                    animation-delay: 0.75s
+                &:nth-of-type(6)
+                    animation-delay: 0.85s
+                &:nth-of-type(7)
+                    animation-delay: 0.95s
+                &:nth-of-type(8)
+                    animation-delay: 1.05s
+                &:nth-of-type(9)
+                    animation-delay: 1.15s
+                &:nth-of-type(10)
+                    animation-delay: 1.25s
+    .nav
+        padding-top: 83px
+        padding-bottom: 31px
+        margin: auto 0 auto
+        width: 100%
+        &__list
+            flex-direction: column
+            height: 100%
+            overflow-x: hidden
+            overflow-y: scroll
+            &::-webkit-scrollbar
+                display: none
+        &__item
+            position: relative
+            width: 100%
+            opacity: 0
+        &__item + &__item
+            margin-top: 24px
+            margin-left: 0

@@ -28,36 +28,69 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // INPUT LENGHT
-    const inputImei = document.getElementById('imei')
-    const inputSerialNumber = document.getElementById('serial-number')
-    const continueBtn = document.querySelector('.trade-in__continue')
-    let imeiCharacters = document.getElementById('imei-characters')
-    let serialNumberCharacters = document.getElementById('serial-number-characters')
+    const customCheckbox = document.querySelectorAll('.custom-checkbox')
 
-    imeiCharacters.innerHTML = 0
-    serialNumberCharacters.innerHTML = 0
+    const inputImei = document.getElementById('imei') // Input IMEI
+    const inputSerialNumber = document.getElementById('serial-number') // Input Serial Number
+    const continueBtn = document.querySelector('.trade-in__continue') // Continue button
+    let imeiCharacters = document.getElementById('imei-characters') // IMEI Characters
+    let serialNumberCharacters = document.getElementById('serial-number-characters') // Serial Number Characters
 
-    inputImei.addEventListener('input', () => {
-        if (inputImei.value.length === 15) {
-            continueBtn.removeAttribute('disabled')
-            continueBtn.classList.add('trade-in__continue--active')
-        } else {
-            continueBtn.setAttribute('disabled', 'disabled')
-            continueBtn.classList.remove('trade-in__continue--active')
-        }
+    if (inputImei) {
+        imeiCharacters.innerHTML = 0 // Initial value
 
-        imeiCharacters.innerHTML = inputImei.value.length
-    })
+        inputImei.addEventListener('input', () => {
+            if (inputImei.value.length === 15) {
+                continueBtn.removeAttribute('disabled')
+                continueBtn.classList.add('trade-in__continue--active')
+            } else {
+                continueBtn.setAttribute('disabled', 'disabled')
+                continueBtn.classList.remove('trade-in__continue--active')
+            }
+    
+            imeiCharacters.innerHTML = inputImei.value.length
+        })
+    }
 
-    inputSerialNumber.addEventListener('input', () => {
-        if (inputSerialNumber.value.length === 11 || inputSerialNumber.value.length === 12) {
-            continueBtn.removeAttribute('disabled')
-            continueBtn.classList.add('trade-in__continue--active')
-        } else {
-            continueBtn.setAttribute('disabled', 'disabled')
-            continueBtn.classList.remove('trade-in__continue--active')
-        }
+    if (serialNumberCharacters) {
+        serialNumberCharacters.innerHTML = 0 // Initial value
+        
+        inputSerialNumber.addEventListener('input', () => {
+            if (inputSerialNumber.value.length === 11 || inputSerialNumber.value.length === 12) {
+                continueBtn.removeAttribute('disabled')
+                continueBtn.classList.add('trade-in__continue--active')
+            } else {
+                continueBtn.setAttribute('disabled', 'disabled')
+                continueBtn.classList.remove('trade-in__continue--active')
+            }
+    
+            serialNumberCharacters.innerHTML = inputSerialNumber.value.length
+        })
+    }
+    
+    if (customCheckbox) {
+        customCheckbox.forEach((item) => {
+            item.addEventListener('change', () => {
+                inputSerialNumber.parentNode.classList.remove('counter-input--hidden')
+            })
+        })
+    }
 
-        serialNumberCharacters.innerHTML = inputSerialNumber.value.length
-    })
+    // MOBILE MENU
+    const hamburger = document.getElementById('hamburger-toggle')
+    const overlay = document.getElementsByClassName('overlay')[0]
+
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            if (hamburger.classList.contains('hamburger--active') && overlay.classList.contains('overlay--open')) {
+                hamburger.classList.remove("hamburger--active");
+                overlay.classList.remove("overlay--open");
+                document.body.classList.remove("scroll-disabled");
+            } else {
+                hamburger.classList.add("hamburger--active");
+                overlay.classList.add("overlay--open");
+                document.body.classList.add("scroll-disabled");
+            }
+        });
+    }
 });

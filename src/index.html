@@ -16,25 +16,40 @@
                 <a href="" class="logotype">
                     <img src="img/dist/logotype.svg" alt="TradeIn TKI">
                 </a>
-                <nav class="nav">
-                    <ul class="nav__list">
-                        <li class="nav__item">
-                            <a href="" class="nav__link">Главная</a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="" class="nav__link">Список заявок</a>
-                        </li>
-                        <li class="nav__item nav__item--active">
-                            <a href="" class="nav__link">Создать заявку</a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="" class="nav__link">Тех. поддержка</a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="" class="nav__link">Выйти</a>
-                        </li>
-                    </ul>
-                </nav>
+                <div class="overlay">
+                    <nav class="nav">
+                        <ul class="nav__list">
+                            <li class="nav__item">
+                                <a href="" class="nav__link">Главная</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="" class="nav__link">Список заявок</a>
+                            </li>
+                            <li class="nav__item nav__item--active">
+                                <a href="" class="nav__link">Создать заявку</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="" class="nav__link">Тех. поддержка</a>
+                            </li>
+                            <li class="nav__item">
+                                <a href="" class="nav__link nav__link--exit">
+                                    Выйти
+                                    <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10.0435 12.3333V15H1V1H10.0435V3.66667" stroke="#3A4C56" stroke-opacity="0.66" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M4.47852 8.3335H17.0003" stroke="#3A4C56" stroke-opacity="0.66" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M13.5215 5L16.9997 8.33333L13.5215 11.6667" stroke="#3A4C56" stroke-opacity="0.66" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>                                        
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <button class="hamburger" id="hamburger-toggle">
+                    Меню
+                    <span class="hamburger__inner"></span>
+                    <span class="hamburger__inner"></span>
+                    <span class="hamburger__inner"></span>
+                </button>
             </div>
         </div>
     </header>
@@ -42,11 +57,15 @@
     <!-- Content -->
     <section class="trade-in">
         <div class="container">
+            <div class="trade-in__top">
+                <h2 class="trade-in__head">Создание заявки на выкуп №<span>ААА-0000000000</span></h2>
+                <div class="trade-in__device">Apple Watch</div>
+            </div>
             <div class="trade-in__wrapper">
                 <div class="trade-in__sidebar">
                     <ul class="stage">
-                        <li class="stage__item stage__item--active">Определение модели</li>
-                        <li class="stage__item">Оценка состояния</li>
+                        <li class="stage__item stage__item--success">Определение модели</li>
+                        <li class="stage__item stage__item--active">Оценка состояния</li>
                         <li class="stage__item">Подтверждение стоимости</li>
                         <li class="stage__item">Ввод данных клиента</li>
                         <li class="stage__item">Проверка</li>
@@ -54,59 +73,223 @@
                     </ul>
                 </div>
                 <div class="trade-in__content">
-                    <div class="trade-in__title">Android</div>
-                    <p class="trade-in__description">Есть ли на устройстве лоток сим-карты (IMEI)?</p>
-                    <div class="tabs">
-                        <ul class="tabs__list" role="tablist">
-                            <li class="tabs__item">
-                                <label for="sim-card1" class="sim-checkbox">
-                                    <input type="radio" class="sim-checkbox__input" name="sim-card" id="sim-card1">
-                                    <span class="sim-checkbox__group">
-                                        <span class="sim-checkbox__icon" style="background-image: url(img/dist/sprite.svg#sim-card);"></span>
-                                        <span class="sim-checkbox__title">Есть</span>
+                    <!-- STAGE 1 -->
+                    <div class="trade-in__inner">
+                        <h3 class="trade-in__title">Android</h3>
+                        <h4 class="trade-in__subtitle">Есть ли на устройстве лоток сим-карты (IMEI)?</h4>
+                        <div class="tabs">
+                            <ul class="tabs__list" role="tablist">
+                                <li class="tabs__item">
+                                    <label for="sim-card1" class="sim-checkbox">
+                                        <input type="radio" class="sim-checkbox__input" name="sim-card" id="sim-card1">
+                                        <span class="sim-checkbox__group">
+                                            <span class="sim-checkbox__icon" style="background-image: url(img/dist/sprite.svg#sim-card);"></span>
+                                            <span class="sim-checkbox__title">Есть</span>
+                                        </span>
+                                    </label>
+                                </li>
+                                <li class="tabs__item">
+                                    <label for="sim-card2" class="sim-checkbox">
+                                        <input type="radio" class="sim-checkbox__input" name="sim-card" id="sim-card2">
+                                        <span class="sim-checkbox__group">
+                                            <span class="sim-checkbox__icon" style="background-image: url(img/dist/sprite.svg#no-sim-card);"></span>
+                                            <span class="sim-checkbox__title">Нет</span>
+                                        </span>
+                                    </label>
+                                </li>
+                            </ul>
+                            <div class="tabs__content tabs__content--margin">
+                                <label for="imei" class="counter-input">
+                                    <input type="number" id="imei" class="counter-input__input input" placeholder="Пример: 356626097111720" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)" min="999999999999999" max="999999999999999">
+                                    <span class="counter-input__group">
+                                        <span class="counter-input__characters" id="imei-characters"></span>/15
                                     </span>
                                 </label>
-                            </li>
-                            <li class="tabs__item">
-                                <label for="sim-card2" class="sim-checkbox">
-                                    <input type="radio" class="sim-checkbox__input" name="sim-card" id="sim-card2">
-                                    <span class="sim-checkbox__group">
-                                        <span class="sim-checkbox__icon" style="background-image: url(img/dist/sprite.svg#no-sim-card);"></span>
-                                        <span class="sim-checkbox__title">Нет</span>
+                            </div>
+                            <div class="tabs__content">
+                                <p class="tabs__paragraph">Поддержка выкупа устройств без сим-карты доступно только для следующих производителей:</p>
+                                <label for="phone1" class="custom-checkbox">
+                                    <input type="radio" id="phone1" name="phone" class="custom-checkbox__input">
+                                    <span class="custom-checkbox__icon"></span>
+                                    <span class="custom-checkbox__title">Samsung</span>
+                                </label>
+                                <label for="phone2" class="custom-checkbox">
+                                    <input type="radio" id="phone2" name="phone" class="custom-checkbox__input">
+                                    <span class="custom-checkbox__icon"></span>
+                                    <span class="custom-checkbox__title">Xiaomi</span>
+                                </label>
+                                <label for="serial-number" class="counter-input counter-input--hidden">
+                                    <input type="text" id="serial-number" class="counter-input__input input" placeholder="Пример: FH8VP6TWJ5X4" minlength="11" maxlength="12">
+                                    <span class="counter-input__group">
+                                        <span class="counter-input__characters" id="serial-number-characters"></span>/11-12
                                     </span>
                                 </label>
-                            </li>
-                        </ul>
-                        <div class="tabs__content tabs__content--margin">
-                            <label for="imei" class="counter-input">
-                                <input type="number" id="imei" class="counter-input__input input" placeholder="Пример: 356626097111720" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)" min="999999999999999" max="999999999999999">
-                                <span class="counter-input__group">
-                                    <span class="counter-input__characters" id="imei-characters"></span>/15
-                                </span>
-                            </label>
-                        </div>
-                        <div class="tabs__content">
-                            <p class="tabs__paragraph">Поддержка выкупа устройств без сим-карты доступно только для следующих производителей:</p>
-                            <label for="phone1" class="custom-checkbox">
-                                <input type="radio" id="phone1" name="phone" class="custom-checkbox__input">
-                                <span class="custom-checkbox__icon"></span>
-                                <span class="custom-checkbox__title">Samsung</span>
-                            </label>
-                            <label for="phone2" class="custom-checkbox">
-                                <input type="radio" id="phone2" name="phone" class="custom-checkbox__input">
-                                <span class="custom-checkbox__icon"></span>
-                                <span class="custom-checkbox__title">Xiaomi</span>
-                            </label>
-                            <label for="imei" class="counter-input">
-                                <input type="number" id="serial-number" class="counter-input__input input" placeholder="Пример: FH8VP6TWJ5X4" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)" min="99999999999" max="999999999999">
-                                <span class="counter-input__group">
-                                    <span class="counter-input__characters" id="serial-number-characters"></span>/11-12
-                                </span>
-                            </label>
+                            </div>
                         </div>
                     </div>
+                    <!-- STAGE 2 -->
+                    <!--<div class="trade-in__inner">
+                        <h3 class="trade-in__title">Оцените состояние экрана устройства (1 из 4)</h3>
+                        <p class="trade-in__description">Внимательно осмотрите экран под разными углами на предмет повреждений.<br>Есть ли на экране мелкие царапины?</p>
+                        <div class="trade-in__details trade-in__details--margin">
+                            <div class="trade-in__left">
+                                <img src="img/dist/" alt="Image" class="trade-in__img">
+                            </div>
+                            <div class="trade-in__right trade-in__right--margin">
+                                <label for="state1" class="custom-checkbox">
+                                    <input type="radio" id="state1" name="state" class="custom-checkbox__input">
+                                    <span class="custom-checkbox__icon"></span>
+                                    <span class="custom-checkbox__title">Да</span>
+                                </label>
+                                <label for="state2" class="custom-checkbox">
+                                    <input type="radio" id="state2" name="state" class="custom-checkbox__input">
+                                    <span class="custom-checkbox__icon"></span>
+                                    <span class="custom-checkbox__title">Нет</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>-->
+                    <!-- STAGE 3 -->
+                    <!--<div class="trade-in__inner">
+                        <div class="trade-in__details">
+                            <div class="trade-in__left">
+                                <h3 class="trade-in__title">Состояние устройства</h3>
+                                <div class="trade-in__block">
+                                    <div class="trade-in__unit">
+                                        <h4 class="trade-in__subtitle">Экран</h4>
+                                        <p class="trade-in__description">Глубокие трещины</p>
+                                    </div>
+                                    <div class="trade-in__unit">
+                                        <h4 class="trade-in__subtitle">Нижняя часть</h4>
+                                        <p class="trade-in__description">Мелкие царапины</p>
+                                    </div>
+                                    <div class="trade-in__unit">
+                                        <h4 class="trade-in__subtitle">Корпус</h4>
+                                        <p class="trade-in__description">Вмятины и сколы</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="trade-in__right trade-in__right--border">
+                                <h3 class="trade-in__title">Стоимость выкупа</h3>
+                                <div class="trade-in__heading">20 000 ₽</div>
+                                <h3 class="trade-in__title">Грейд</h3>
+                                <div class="trade-in__heading">А</div>
+                            </div>
+                        </div>
+                    </div>-->
+                    <!-- STAGE 4 -->
+                    <!--<div class="trade-in__inner">
+                        <h3 class="trade-in__title">Введите данные клиента</h3>
+                        <div class="trade-in__block">
+                            <div class="trade-in__group">
+                                <input type="text" class="trade-in__input input" placeholder="Фамилия">
+                                <input type="text" class="trade-in__input input" placeholder="Имя">
+                            </div>
+                            <div class="trade-in__group">
+                                <input type="text" class="trade-in__input input" placeholder="Отчество (при наличии)">
+                                <input type="text" class="trade-in__input input" placeholder="Номер телефона">
+                            </div>
+                            <div class="trade-in__group">
+                                <input type="text" class="trade-in__input input" placeholder="E-mail">
+                            </div>
+                        </div>
+                        <div class="trade-in__block">
+                            <div class="trade-in__group">
+                                <input type="text" class="trade-in__input input" placeholder="Серия и номер паспорта">
+                                <input type="text" class="trade-in__input input" placeholder="Дата рождения">
+                            </div>
+                            <div class="trade-in__group">
+                                <input type="text" class="trade-in__input input" placeholder="Кем выдан">
+                            </div>
+                            <div class="trade-in__group">
+                                <input type="text" class="trade-in__input input" placeholder="Адрес регистрации">
+                            </div>
+                        </div>
+                    </div>-->
+                    <!-- STAGE 5 -->
+                    <!--<div class="trade-in__inner">
+                        <h3 class="trade-in__title">Внимательно проверьте данные клиента и выкупаемого устройства</h3>
+                        <div class="trade-in__group trade-in__group--data">
+                            <h4 class="trade-in__subtitle">Данные клиента</h4>
+                            <a href="" class="trade-in__btn trade-in__btn--edit btn">Изменить</a>
+                        </div>
+                        <div class="data-table">
+                            <div class="data-table__item">
+                                <div class="data-table__title">Фамилия</div>
+                                <div class="data-table__value">FH7RN027HDNC</div>
+                            </div>
+                            <div class="data-table__item">
+                                <div class="data-table__title">Имя</div>
+                                <div class="data-table__value">FH7RN027HDNC</div>
+                            </div>
+                            <div class="data-table__item">
+                                <div class="data-table__title">Отчество</div>
+                                <div class="data-table__value">FH7RN027HDNC</div>
+                            </div>
+                            <div class="data-table__item">
+                                <div class="data-table__title">Номер телефона</div>
+                                <div class="data-table__value">FH7RN027HDNC</div>
+                            </div>
+                            <div class="data-table__item">
+                                <div class="data-table__title">E-mail</div>
+                                <div class="data-table__value">FH7RN027HDNC</div>
+                            </div>
+                            <div class="data-table__item">
+                                <div class="data-table__title">Серия и номер паспорта</div>
+                                <div class="data-table__value">FH7RN027HDNC</div>
+                            </div>
+                            <div class="data-table__item">
+                                <div class="data-table__title">Кем выдан</div>
+                                <div class="data-table__value">FH7RN027HDNC</div>
+                            </div>
+                            <div class="data-table__item">
+                                <div class="data-table__title">Адрес регистрации</div>
+                                <div class="data-table__value">FH7RN027HDNC</div>
+                            </div>
+                        </div>
+                        <h4 class="trade-in__subtitle">Данные устройства</h4>
+                        <p class="trade-in__description">Для изменения данных устройства обратитесь в чат тех. поддержки в главном меню</p>
+                        <div class="data-table">
+                            <div class="data-table__item">
+                                <div class="data-table__title">SN</div>
+                                <div class="data-table__value">FH7RN027HDNC</div>
+                            </div>
+                            <div class="data-table__item">
+                                <div class="data-table__title">Модель</div>
+                                <div class="data-table__value">A1977</div>
+                            </div>
+                            <div class="data-table__item">
+                                <div class="data-table__title">Поколение</div>
+                                <div class="data-table__value">Series 4</div>
+                            </div>
+                            <div class="data-table__item">
+                                <div class="data-table__title">Размер</div>
+                                <div class="data-table__value">40 мм</div>
+                            </div>
+                            <div class="data-table__item">
+                                <div class="data-table__title">Цвет</div>
+                                <div class="data-table__value">Gold</div>
+                            </div>
+                            <div class="data-table__item">
+                                <div class="data-table__title">GPS</div>
+                                <div class="data-table__value">Да</div>
+                            </div>
+                            <div class="data-table__item">
+                                <div class="data-table__title">Cellular</div>
+                                <div class="data-table__value">-</div>
+                            </div>
+                        </div>
+                    </div>-->
+                    <!-- STAGE 6 -->
+                    <!--<div class="trade-in__inner">
+                        <div class="trade-in__success">
+                            <div class="trade-in__success-mark" style="background-image: url(img/dist/sprite.svg#success-mark);"></div>
+                            <h3 class="trade-in__title">Заявка №ААА-0000000000 успешно создана!</h3>
+                            <p class="trade-in__description trade-in__description--margin">Распечатайте договор</p>
+                        </div>
+                    </div>-->
                     <div class="trade-in__buttons">
-                        <button href="" class="trade-in__refusing btn">Отказ</button>
+                        <button href="" class="trade-in__btn btn">Отказ</button>
                         <button href="" class="trade-in__continue btn" disabled>Продолжить</button>
                     </div>
                 </div>

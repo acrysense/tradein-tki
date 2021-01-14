@@ -2,41 +2,115 @@
 @import "header"
 
 .trade-in
-    margin-top: 48px
+    margin: 48px 0
+    &__top
+        display: flex
+        align-items: center
+        justify-content: space-between
+    &__head
+        font-family: $graphiclcg-medium
+        font-size: 24px
+        line-height: 32px
+    &__device
+        font-family: $graphiclcg-medium
+        font-size: 18px
+        line-height: 32px
+        color: rgba(#3A4C56, 0.66)
     &__wrapper
         display: flex
+        margin-top: 36px
         min-height: 616px
         background: #FFF
+        box-shadow: 0 2px 16px rgba(#006AA7, 0.08)
     &__sidebar
         padding: 40px 28px 40px 40px
         width: 27%
         border-right: 1px solid #E4E4E4
     &__content
         position: relative
+        display: flex
+        flex-direction: column
+        justify-content: space-between
         padding: 47px 62px 37px 48px
         width: 73%
+    &__inner
+        max-height: 463px
+        overflow-y: scroll
     &__title
         font-family: $graphiclcg-medium
         font-size: 22px
         font-weight: 500
         line-height: 100%
-    &__description
+    &__subtitle
         margin-top: 19px
         font-family: $graphiclcg-medium
         font-size: 18px
         font-weight: 500
         line-height: 1.31
         color: rgba(#000, 0.66)
+    &__description
+        margin-top: 12px
+        font-size: 16px
+        &--margin
+            margin-top: 20px
+    &__heading
+        margin-top: 16px
+        font-family: $graphiclcg-semibold
+        font-size: 36px
+        line-height: 1
+        color: #0089D7
+        & + .trade-in__title
+            margin-top: 40px
+    &__details
+        display: flex
+        justify-content: space-between
+        min-height: 456px
+        &--margin
+            margin-top: 46px
+    &__left
+        width: 50%
+    &__right
+        width: 50%
+        &--border
+            padding-left: 64px
+            border-left: 1px solid #E4E4E4
+    &__img
+        max-width: 334px
+        max-height: 334px
+        width: 100%
+        height: 100%
+        text-align: center
+    &__block
+        margin-top: 32px
+    &__group
+        display: flex
+        align-items: center
+        &--data
+            margin-top: 22px
+        input + input
+            margin-left: 34px
+        & > .trade-in__subtitle
+            margin-top: 0
+    &__group + &__group
+        margin-top: 16px
+    &__success
+        text-align: center
+    &__success-mark
+        margin: 100px auto 56px
+        width: 104px
+        height: 104px
+        background-repeat: no-repeat
+        background-size: cover
+        background-position: center
     &__buttons
-        position: absolute
-        bottom: 37px
-        left: 48px
-        right: 48px
         display: flex
         align-items: center
         justify-content: space-between
-    &__refusing
+        background: #FFF
+    &__btn
         color: #0089D7
+        &--edit
+            margin-left: 32px
         &:hover
             color: #0089D7
             border: 1px solid #0089D7
@@ -71,6 +145,9 @@
             max-width: 36px
             max-height: 36px
             margin-right: 20px
+            background-repeat: no-repeat
+            background-size: 14px
+            background-position: center
             border: 1px solid #D1D1D1
             border-radius: 50%
         &:not(:last-child)
@@ -88,6 +165,15 @@
             &::before
                 border: 2px solid #0089D7
                 box-shadow: 0 0 16px rgba(#0089D7, 0.16)
+        &--success
+            &::before
+                content: ''
+                background-color: #0089D7
+                background-image: url(../img/dist/sprite.svg#mark-icon)
+                border: 1px solid #0089D7
+            &:not(:last-child)
+                &::after
+                    background: #0089D7
     &__item + &__item
         margin-top: 32px
 
@@ -114,6 +200,8 @@
     position: relative
     margin-top: 29px
     width: 100%
+    &--hidden
+        display: none
     &__input
         -moz-appearance: textfield
         &::-webkit-outer-spin-button,
@@ -201,3 +289,89 @@
             box-shadow: 0 0 16px rgba(#0089D7, 0.16)
     &__title
         color: rgba(#000, 0.66)
+
+.data-table
+    margin-top: 14px
+    &__item
+        display: flex
+        align-items: center
+        padding: 11.5px 0
+        border-bottom: 1px solid #E4E4E4
+    &__title,
+    &__value
+        overflow: hidden
+        width: 100%
+        font-size: 16px
+    &__title
+        max-width: 193px
+        color: rgba(#000000, 0.4)
+    &__value
+        margin-left: 40px
+        color: rgba(#000000, 0.66)
+
+// MEDIA QUARIES
+@media (max-width: 991px)
+    .trade-in
+        &__wrapper
+            flex-direction: column
+        &__sidebar
+            width: 100%
+            border-right: none
+        &__content
+            width: 100%
+        &__buttons
+            margin-top: 50px
+    .stage
+        display: flex
+        align-items: center
+        overflow-x: scroll
+        &::-webkit-scrollbar
+            display: none
+        &__item
+            &:not(:last-child)
+                &::after
+                    display: none
+        &__item + &__item
+            margin-top: 0
+            margin-left: 32px
+
+@media (min-width: 768px) and (max-width: 991px)
+    .trade-in
+        &__right
+            &--margin
+                margin-left: 30px
+
+@media (max-width: 767px)
+    .trade-in
+        &__top
+            flex-direction: column
+            justify-content: center
+        &__head,
+        &__device
+            text-align: center
+        &__details
+            flex-direction: column
+        &__left,
+        &__right
+            width: 100%
+        &__right
+            margin-top: 50px
+            &--border
+                padding-left: 0
+                border-left: none
+        &__group
+            flex-direction: column
+            input + input
+                margin-left: 0
+                margin-top: 16px
+
+@media (max-width: 575px)
+    .trade-in
+        &__content
+            padding: 47px 16px 37px
+    .tabs
+        &__list
+            flex-direction: column
+        &__item + &__item
+            margin-top: 50px
+            margin-left: 0
