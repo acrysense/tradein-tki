@@ -74,7 +74,7 @@
                 </div>
                 <div class="trade-in__content">
                     <!-- STAGE 1 -->
-                    <div class="trade-in__inner">
+                    <div class="trade-in__inner trade-in__inner--active">
                         <h3 class="trade-in__title">Android</h3>
                         <h4 class="trade-in__subtitle">Есть ли на устройстве лоток сим-карты (IMEI)?</h4>
                         <div class="tabs">
@@ -128,12 +128,12 @@
                         </div>
                     </div>
                     <!-- STAGE 2 -->
-                    <!--<div class="trade-in__inner">
+                    <div class="trade-in__inner">
                         <h3 class="trade-in__title">Оцените состояние экрана устройства (1 из 4)</h3>
                         <p class="trade-in__description">Внимательно осмотрите экран под разными углами на предмет повреждений.<br>Есть ли на экране мелкие царапины?</p>
                         <div class="trade-in__details trade-in__details--margin">
                             <div class="trade-in__left">
-                                <img src="img/dist/" alt="Image" class="trade-in__img">
+                                <img src="" alt="Image" class="trade-in__img">
                             </div>
                             <div class="trade-in__right trade-in__right--margin">
                                 <label for="state1" class="custom-checkbox">
@@ -148,9 +148,9 @@
                                 </label>
                             </div>
                         </div>
-                    </div>-->
+                    </div>
                     <!-- STAGE 3 -->
-                    <!--<div class="trade-in__inner">
+                    <div class="trade-in__inner">
                         <div class="trade-in__details">
                             <div class="trade-in__left">
                                 <h3 class="trade-in__title">Состояние устройства</h3>
@@ -176,9 +176,9 @@
                                 <div class="trade-in__heading">А</div>
                             </div>
                         </div>
-                    </div>-->
+                    </div>
                     <!-- STAGE 4 -->
-                    <!--<div class="trade-in__inner">
+                    <div class="trade-in__inner">
                         <h3 class="trade-in__title">Введите данные клиента</h3>
                         <div class="trade-in__block">
                             <div class="trade-in__group">
@@ -205,9 +205,9 @@
                                 <input type="text" class="trade-in__input input" placeholder="Адрес регистрации">
                             </div>
                         </div>
-                    </div>-->
+                    </div>
                     <!-- STAGE 5 -->
-                    <!--<div class="trade-in__inner">
+                    <div class="trade-in__inner">
                         <h3 class="trade-in__title">Внимательно проверьте данные клиента и выкупаемого устройства</h3>
                         <div class="trade-in__group trade-in__group--data">
                             <h4 class="trade-in__subtitle">Данные клиента</h4>
@@ -248,7 +248,7 @@
                             </div>
                         </div>
                         <h4 class="trade-in__subtitle">Данные устройства</h4>
-                        <p class="trade-in__description">Для изменения данных устройства обратитесь в чат тех. поддержки в главном меню</p>
+                        <p class="trade-in__description trade-in__description--grey">Для изменения данных устройства обратитесь в чат тех. поддержки в главном меню</p>
                         <div class="data-table">
                             <div class="data-table__item">
                                 <div class="data-table__title">SN</div>
@@ -279,18 +279,19 @@
                                 <div class="data-table__value">-</div>
                             </div>
                         </div>
-                    </div>-->
+                    </div>
                     <!-- STAGE 6 -->
-                    <!--<div class="trade-in__inner">
+                    <div class="trade-in__inner">
                         <div class="trade-in__success">
                             <div class="trade-in__success-mark" style="background-image: url(img/dist/sprite.svg#success-mark);"></div>
                             <h3 class="trade-in__title">Заявка №ААА-0000000000 успешно создана!</h3>
                             <p class="trade-in__description trade-in__description--margin">Распечатайте договор</p>
                         </div>
-                    </div>-->
+                    </div>
                     <div class="trade-in__buttons">
-                        <button href="" class="trade-in__btn btn">Отказ</button>
-                        <button href="" class="trade-in__continue btn" disabled>Продолжить</button>
+                        <button class="trade-in__btn btn" id="stage-end">Отказ</button>
+                        <button class="trade-in__btn trade-in__btn--back btn" id="stage-back">Назад</button>
+                        <button class="trade-in__cta btn" id="stage-continue" disabled>Продолжить</button>
                     </div>
                 </div>
             </div>

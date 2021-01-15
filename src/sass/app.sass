@@ -34,8 +34,11 @@
         padding: 47px 62px 37px 48px
         width: 73%
     &__inner
+        display: none
         max-height: 463px
         overflow-y: scroll
+        &--active
+            display: block
     &__title
         font-family: $graphiclcg-medium
         font-size: 22px
@@ -53,6 +56,8 @@
         font-size: 16px
         &--margin
             margin-top: 20px
+        &--grey
+            color: rgba(#000000, 0.4)
     &__heading
         margin-top: 16px
         font-family: $graphiclcg-semibold
@@ -107,14 +112,20 @@
         align-items: center
         justify-content: space-between
         background: #FFF
+        &--success
+            display: none
     &__btn
         color: #0089D7
         &--edit
             margin-left: 32px
+        &--back
+            display: none
+            margin-left: auto
+            margin-right: 24px
         &:hover
             color: #0089D7
             border: 1px solid #0089D7
-    &__continue
+    &__cta
         color: #E4E4E4
         &:hover
             color: #E4E4E4
@@ -140,11 +151,11 @@
             display: flex
             align-items: center
             justify-content: center
+            margin-right: 20px
             min-width: 36px
             min-height: 36px
             max-width: 36px
             max-height: 36px
-            margin-right: 20px
             background-repeat: no-repeat
             background-size: 14px
             background-position: center
@@ -155,7 +166,7 @@
                 content: ''
                 position: absolute
                 top: 36px
-                left: 18px
+                left: 17px
                 display: inline-block
                 width: 2px
                 height: 33px
@@ -176,6 +187,29 @@
                     background: #0089D7
     &__item + &__item
         margin-top: 32px
+
+.substage
+    &__item
+        display: flex
+        align-items: center
+        font-size: 16px
+        color: rgba(#000000, 0.4)
+        &::before
+            content: ''
+            display: flex
+            align-items: center
+            justify-content: center
+            margin-left: 6px
+            margin-right: 26px
+            min-width: 24px
+            min-height: 24px
+            max-width: 24px
+            max-height: 24px
+            background-repeat: no-repeat
+            background-size: 14px
+            background-position: center
+            border: 1px solid #D1D1D1
+            border-radius: 50%
 
 .tabs
     margin-top: 34px

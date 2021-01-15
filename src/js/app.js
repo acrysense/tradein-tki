@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const inputImei = document.getElementById('imei') // Input IMEI
     const inputSerialNumber = document.getElementById('serial-number') // Input Serial Number
-    const continueBtn = document.querySelector('.trade-in__continue') // Continue button
+    const continueBtn = document.querySelector('.trade-in__cta') // Continue button
     let imeiCharacters = document.getElementById('imei-characters') // IMEI Characters
     let serialNumberCharacters = document.getElementById('serial-number-characters') // Serial Number Characters
 
@@ -42,10 +42,10 @@ document.addEventListener("DOMContentLoaded", function () {
         inputImei.addEventListener('input', () => {
             if (inputImei.value.length === 15) {
                 continueBtn.removeAttribute('disabled')
-                continueBtn.classList.add('trade-in__continue--active')
+                continueBtn.classList.add('trade-in__cta--active')
             } else {
                 continueBtn.setAttribute('disabled', 'disabled')
-                continueBtn.classList.remove('trade-in__continue--active')
+                continueBtn.classList.remove('trade-in__cta--active')
             }
     
             imeiCharacters.innerHTML = inputImei.value.length
@@ -58,10 +58,10 @@ document.addEventListener("DOMContentLoaded", function () {
         inputSerialNumber.addEventListener('input', () => {
             if (inputSerialNumber.value.length === 11 || inputSerialNumber.value.length === 12) {
                 continueBtn.removeAttribute('disabled')
-                continueBtn.classList.add('trade-in__continue--active')
+                continueBtn.classList.add('trade-in__cta--active')
             } else {
                 continueBtn.setAttribute('disabled', 'disabled')
-                continueBtn.classList.remove('trade-in__continue--active')
+                continueBtn.classList.remove('trade-in__cta--active')
             }
     
             serialNumberCharacters.innerHTML = inputSerialNumber.value.length
@@ -92,5 +92,34 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.body.classList.add("scroll-disabled");
             }
         });
+    }
+
+    // STAGE (TEMP)
+    const stageEnd = document.getElementById('stage-end')
+    const stageContinue = document.getElementById('stage-continue')
+    const stageBack = document.getElementById('stage-back')
+    const maxStage = 5 // Max stage (start 0)
+    let tradeInInner = document.querySelectorAll('.trade-in__inner')
+    let stage = 0 // Initial stage
+
+    if (tradeInInner) {
+        stageContinue.addEventListener('click', () => {
+            if (maxStage > stage) {
+                tradeInInner.forEach((child) => child.classList.remove('trade-in__inner--active'))
+                stage++
+                tradeInInner[stage].classList.add('trade-in__inner--active')
+            }
+            
+            if (stage === 1) {
+                stageBack.style.display = 'block'
+            } else {
+                stageBack.style.display = 'none'
+            }
+
+            if (stage === maxStage) {
+                stageEnd.innerHTML = 'Завершить'
+                stageContinue.innerHTML = 'Распечатать договор'
+            }
+        })
     }
 });
